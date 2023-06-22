@@ -286,7 +286,7 @@ então abra seu navegador ou postman ou insomnia e teste como "http://localhost:
 # Licença
 
 # Documentação
-
+![Documentação](assets/pdf/CHILD%20REWARDS.pdf)  
 # Contribuições
 Não estamos aceitando contribuições no momento.
 
