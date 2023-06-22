@@ -10,7 +10,7 @@ export class CreateChildController implements IController {
     httpRequest: HttpRequest<CreateChildParams>
   ): Promise<HttpResponse<Child | string>> {
     try {
-      const requiredFields = ["name", "photo", "points"];
+      const requiredFields = ["name", "photo", "points", "id_user"];
 
       for (const field of requiredFields) {
         if (!httpRequest?.body?.[field as keyof CreateChildParams]) {

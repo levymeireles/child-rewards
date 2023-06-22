@@ -29,11 +29,19 @@ import { UpdateTaskController } from "./controllers/task/update-task/update-task
 import { MongoDeleteTaskRepository } from "./repositories/task/delete-task/mongo-delete-task";
 import { DeleteTaskController } from "./controllers/task/delete-task/delete-task";
 
+import { GetRewardController } from "./controllers/reward/get-reward/get-reward";
+import { MongoGetRewardRepository } from "./repositories/reward/get-reward/mongo-get-reward";
+import { MongoCreateRewardRepository } from "./repositories/reward/create-reward/mongo-create-reward";
+import { CreateRewardController } from "./controllers/reward/create-reward/create-reward";
+import { MongoUpdateRewardRepository } from "./repositories/reward/update-reward/mongo-update-reward";
+import { UpdateRewardController } from "./controllers/reward/update-reward/update-reward";
+import { MongoDeleteRewardRepository } from "./repositories/reward/delete-reward/mongo-delete-reward";
+import { DeleteRewardController } from "./controllers/reward/delete-reward/delete-reward";
+
+const app = express();
 
 const main = async () => {
   config();
-
-  const app = express();
 
   app.use(express.json());
 
@@ -148,60 +156,114 @@ const main = async () => {
   });
 
 
-    // TASKS ROUTES
-    app.get("/tasks", async (req, res) => {
-      const mongoGetTaskRepository = new MongoGetTaskRepository();
-  
-      const getTaskController = new GetTaskController(mongoGetTaskRepository);
-  
-      const { body, statusCode } = await getTaskController.handle();
-  
-      res.status(statusCode).send(body);
-    });
-  
-    app.post("/tasks", async (req, res) => {
-      const mongoCreateTaskRepository = new MongoCreateTaskRepository();
-  
-      const createTaskController = new CreateTaskController(
-        mongoCreateTaskRepository
-      );
-  
-      const { body, statusCode } = await createTaskController.handle({
-        body: req.body,
-      });
-  
-      res.status(statusCode).send(body);
-    });
-  
-    app.patch("/tasks/:id", async (req, res) => {
-      const mongoUpdateTaskRepository = new MongoUpdateTaskRepository();
-  
-      const updateTaskController = new UpdateTaskController(
-        mongoUpdateTaskRepository
-      );
-  
-      const { body, statusCode } = await updateTaskController.handle({
-        body: req.body,
-        params: req.params,
-      });
-  
-      res.status(statusCode).send(body);
-    });
-  
-    app.delete("/tasks/:id", async (req, res) => {
-      const mongoDeleteTaskRepository = new MongoDeleteTaskRepository();
-  
-      const deleteTaskController = new DeleteTaskController(
-        mongoDeleteTaskRepository
-      );
-  
-      const { body, statusCode } = await deleteTaskController.handle({
-        params: req.params,
-      });
-  
-      res.status(statusCode).send(body);
+  // TASKS ROUTES
+  app.get("/tasks", async (req, res) => {
+    const mongoGetTaskRepository = new MongoGetTaskRepository();
+
+    const getTaskController = new GetTaskController(mongoGetTaskRepository);
+
+    const { body, statusCode } = await getTaskController.handle();
+
+    res.status(statusCode).send(body);
+  });
+
+  app.post("/tasks", async (req, res) => {
+    const mongoCreateTaskRepository = new MongoCreateTaskRepository();
+
+    const createTaskController = new CreateTaskController(
+      mongoCreateTaskRepository
+    );
+
+    const { body, statusCode } = await createTaskController.handle({
+      body: req.body,
     });
 
+    res.status(statusCode).send(body);
+  });
+
+  app.patch("/tasks/:id", async (req, res) => {
+    const mongoUpdateTaskRepository = new MongoUpdateTaskRepository();
+
+    const updateTaskController = new UpdateTaskController(
+      mongoUpdateTaskRepository
+    );
+
+    const { body, statusCode } = await updateTaskController.handle({
+      body: req.body,
+      params: req.params,
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+  app.delete("/tasks/:id", async (req, res) => {
+    const mongoDeleteTaskRepository = new MongoDeleteTaskRepository();
+
+    const deleteTaskController = new DeleteTaskController(
+      mongoDeleteTaskRepository
+    );
+
+    const { body, statusCode } = await deleteTaskController.handle({
+      params: req.params,
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+
+  // REWARDS ROUTES
+  app.get("/rewards", async (req, res) => {
+    const mongoGetRewardRepository = new MongoGetRewardRepository();
+
+    const getRewardController = new GetRewardController(mongoGetRewardRepository);
+
+    const { body, statusCode } = await getRewardController.handle();
+
+    res.status(statusCode).send(body);
+  });
+
+  app.post("/rewards", async (req, res) => {
+    const mongoCreateRewardRepository = new MongoCreateRewardRepository();
+
+    const createRewardController = new CreateRewardController(
+      mongoCreateRewardRepository
+    );
+
+    const { body, statusCode } = await createRewardController.handle({
+      body: req.body,
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+  app.patch("/rewards/:id", async (req, res) => {
+    const mongoUpdateRewardRepository = new MongoUpdateRewardRepository();
+
+    const updateRewardController = new UpdateRewardController(
+      mongoUpdateRewardRepository
+    );
+
+    const { body, statusCode } = await updateRewardController.handle({
+      body: req.body,
+      params: req.params,
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+  app.delete("/rewards/:id", async (req, res) => {
+    const mongoDeleteRewardRepository = new MongoDeleteRewardRepository();
+
+    const deleteRewardController = new DeleteRewardController(
+      mongoDeleteRewardRepository
+    );
+
+    const { body, statusCode } = await deleteRewardController.handle({
+      params: req.params,
+    });
+
+    res.status(statusCode).send(body);
+  });
   //INIT SERVER
   const port = process.env.PORT || 8000;
 
@@ -209,3 +271,5 @@ const main = async () => {
 };
 
 main();
+
+export default app;
