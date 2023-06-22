@@ -2,14 +2,48 @@
 Projeto para gestão de recompensas para tarefas de casa de crianças
 
 # Instalação
-## Docker
-Primeiro crie uma imagem a partir do arquivo dockerfile que está na raiz do projeto (você deve incluir o '.' ponto final no comando abaixo)  
-`docker build -t api-child-rewards .`  
+## Clone
+Primeiro clone este repostório em sua máquina
+`git clone https://github.com/levymeireles/child-rewards.git`  
 
-Após o criar a imagem crie um container a partir desta imagem criada 'api-child-rewards'  
-`docker run -d -p 8000:8000 api-child-rewards`
+Em seguida abra a pasta no seu terminal
 
-então acesse: http://localhost:8000/ no navegador ou via aplicativo como 'postman' ou 'insomnia'
+Na pasta raiz do projeto execute o comando abaixo para instalar as dependências
+`npm install` 
+
+Crie uma conta gratuita no mongoDb e crie um cluster https://www.mongodb.com/pt-br/cloud/atlas/register  
+docs: https://www.mongodb.com/docs/v6.0/core/databases-and-collections/
+
+Após criar sua conta vá no menu lateral e acessa a página "Database" então clique em  "+ Create"  
+![Create database img-1](assets/images//create-database-1.png)  
+Escolha a opção "Shared" para um database gratuito
+![Create databse img-2](assets/images//create-database-2.png)  
+Escolha a localização em que gostaria de ter seu cluster
+![Create databse img-3](assets/images//create-database-3.png)  
+Então clique em "Create Cluster"
+![Create databse img-4](assets/images//create-database-4.png)  
+Irá pedir para criar um usuário e senha, guarde pois usaremos nos próximos passos
+Após isso volte para  tela principal e clique em "Connect"
+![Create databse img-5](assets/images//create-database-5.png)  
+Selecione a opção "Drivers"
+![Create databse img-6](assets/images//create-database-6.png)  
+Então aparecerá sua URL de conexão ao seu cluster (usaremos no próximo passo)
+![Create databse img-7](assets/images//create-database-7.png)  
+
+Após criar seu database, crie um arquivo ".env" na pasta raiz do projeto
+e adicione as seguintes variavéis:
+
+PORT=8000  
+MONGODB_URL=URL DO SEU CLUSTER (que pegou no passo anterior)  
+MONGODB_USERNAME=SEU USERNAME (que criou na criação do cluster)  
+MONGODB_PASSWORD=SUA SENHA (que criou na criação do cluster)  
+
+Então vá no terminal novamente e execute o comando 
+`npm run start:dev`
+
+No terminal aparecerá a porta onde o servidor está rodando (default: 8000)
+
+então abra seu navegador ou postman ou insomnia e teste como "http://localhost:8000/users"
 
 # Como usar
 ## API
@@ -245,9 +279,9 @@ então acesse: http://localhost:8000/ no navegador ou via aplicativo como 'postm
 
 
 # Tecnologias usadas
-- Docker
 - Node.js
 - Express
+- Estrutura SOLID
 
 # Licença
 
