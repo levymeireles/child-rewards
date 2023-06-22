@@ -25,6 +25,7 @@ export class UpdateChildController implements IController {
         "name",
         "photo",
         "points",
+        "id_user"
       ];
 
       const someFieldIsNotAllowedToUpdate = Object.keys(body).some(

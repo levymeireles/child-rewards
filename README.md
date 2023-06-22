@@ -13,18 +13,62 @@ então acesse: http://localhost:8000/ no navegador ou via aplicativo como 'postm
 
 # Como usar
 ## API
-### Users - Classe responsável em gerenciar o usuário da aplicação (responsável da criança)
+## Users - Classe responsável em gerenciar o usuário da aplicação (responsável da criança)
 
 ```http
   GET /users/
 ```
 
-| Parametros | Tipo     | Descrição                             |
+| Parâmetros | Tipo     | Descrição                             |
 | :--------- | :------- | :------------------------------------ |
+| none| none|none
 
-| Return |
-| :----- |
-| Users[]|
+| Return | Descrição|
+| :----- | :-----|
+| Users[]|lista de usuários|
+
+```http
+  POST /users/
+```
+
+| Parâmetros | Tipo     | Descrição                             |
+| :--------- | :------- | :------------------------------------ |
+| name| string |nome do usuário|
+| email| string |email do usuário|
+| photo| string |foto do usuário|
+| password| string |senha do usuário|
+
+| Return | Descrição|
+| :----- | :-----|
+| Users|Usuário criado|
+
+```http
+  PATCH /users/
+```
+
+| Parâmetros | Tipo     | Descrição                             |
+| :--------- | :------- | :------------------------------------ |
+| id| string| id do usuário a ser alterado|
+| name?| string| nome do usuário a ser alterado|
+| photo?| string| foto do usuário a ser alterado|
+| password?| string| senha do usuário a ser alterado|
+
+| Return | Descrição|
+| :----- | :-----|
+| Users|Usuário alterado|
+
+```http
+  DELETE /users/
+```
+
+| Parâmetros | Tipo     | Descrição                             |
+| :--------- | :------- | :------------------------------------ |
+| id| string|id para excluir registro
+
+| Return | Descrição|
+| :----- | :-----|
+| Users|Usuário deletado|
+
 
 # Tecnologias usadas
 - Docker

@@ -1,0 +1,10 @@
+@host = http://localhost:8000
+
+###
+
+GET {{host}}/users
+###
+DELETE {{host}}/childs/6493a54f41ce786bbef7ed46
+###
+
+GET {{host}}/childs
