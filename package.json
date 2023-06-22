@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon src/index.ts",
     "start": "node build/index.js",
-    "build": "tsc --project tsconfig.json",
+    "build": "npm link typescript tsc --project tsconfig.json",
     "test": "SET NODE_OPTIONS=--experimental-vm-modules && jest --detectOpenHandles"
   },
   "keywords": [],
