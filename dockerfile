@@ -1,13 +1,13 @@
-FROM node:latest
+# FROM node:latest
 
-WORKDIR /
+# WORKDIR /
 
-COPY . .
+# COPY . .
 
-ENV PORT=8000
+# ENV PORT=8000
 
-RUN npm install
+# RUN npm install
 
-EXPOSE $PORT
+# EXPOSE $PORT
 
-ENTRYPOINT ["node", "index.js"]
+# ENTRYPOINT ["node", "index.js"]
